@@ -1,0 +1,185 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+body {
+  margin: 0;
+
+  background: linear-gradient(-45deg, #FF8008, #FFC837);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0 50%;
+  }
+}
+
+.fw-light{
+  margin-left: 230px;
+  font-size: 50px;
+}
+
+.lead{
+  margin-left: 130px;
+}
+
+.buttons{
+  margin-left: 310px;
+  word-spacing: 50px;
+}
+
+.row{
+  margin-left: 5x;
+  margin-top: 100px;
+}
+span {
+  position: absolute;
+  margin-top: -310px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #cf1b1b;
+  font-size: 60px;
+  letter-spacing: 8px;
+  cursor: pointer;
+  margin-right: 150px;
+}
+
+span::before {
+  content: "Blog";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+span::after {
+  content: "Blog";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+span:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+span:hover:after {
+  top: -10px;
+  left: -10px;
+} 
+
+.btn {
+  margin-right: 100px;
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 11px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 50%;
+}
+
+.btn:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.btn:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.btn:disabled {
+  cursor: auto;
+}
+
+
+</style>
+
+<div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <span>Blog</span>
+      <p class="lead text-muted">Welcome, it's blog post website where you can create a posts, and share your emotionals</p>
+      <p>
+      <div class="buttons">
+        {% if user.is_authenticated %}
+            <a href="profile" class="btn btn-primary my-2">Profile</a>
+            <a href="blog" class="btn btn-primary my-2">Posts</a>
+        {% else %}
+            <a href="{% url 'account_login' %}" class="btn btn-secondary my-2">Login</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-secondary my-2">Register</a>
+        {% endif %}
+      </div>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+
+

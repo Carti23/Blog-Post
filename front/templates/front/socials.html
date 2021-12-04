@@ -1,0 +1,13 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="" method="POST" class="ui form" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form|crispy }}
+<div class="actions">
+<button type='submit' class="ui positive right labeled icon button">
+  Update
+  <i class="checkmark icon"></i>
+</button>
+</form>
+{% endblock %}

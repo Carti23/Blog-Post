@@ -1,0 +1,53 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+  margin: 0;
+
+  background: linear-gradient(-45deg, #b92b27, #1565C0);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0 50%;
+  }
+}
+.ui {
+  margin-left: 520px;
+  padding-right: 10px;
+  width: 50%;
+  
+}
+
+.primaryAction {
+  margin-left: 1px;
+  padding-right: 30px;
+  margin-top: 10px;
+}
+.h1{
+  margin-left: 520px;
+}
+
+</style>
+
+<h1 class="h1">Update Your Profile</h1>
+
+<form action="" method="POST" class="ui form" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ u_form|crispy }}
+<div class="actions">
+<button class="primaryAction mt-3 btn btn-dark" type="submit">Update</button><br>
+  <i class="checkmark icon"></i>
+</button>
+</form>
+{% endblock %}
